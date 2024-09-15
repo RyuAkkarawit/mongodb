@@ -36,12 +36,12 @@ export default function Home() {
   }
   return (
     <>
-      <div className="flex justify-center">
-        <div className="container border border-gray-400 p-8 rounded-lg">
-          <p className="text-xl font-bold">Todo App</p>
+      <div className="flex justify-center my-5 ;">
+        <div className="container border border-gray-500 p-8 rounded-lg bg-yellow-200 ">
+          <p className="text-xl font-bold text-center  text-blue-600 ">Todo App</p>
           <div className="flex justify-end">
             <div className="grid gap-y-2.5">
-              <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-x-1">
+              <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-x-1" >
                 <label className="content-center text-end sm:col-span-1 lg:col-span-1 px-2">ชื่อเรื่อง: </label>
                 <input type="text" id="name" className="border border-gray-400 rounded-lg p-2 sm:col-span-1 lg:col-span-2" onChange={(event) => {
                   setCurrentTodo({
