@@ -37,8 +37,8 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-center my-5 ;">
-        <div className="container border border-gray-500 p-8 rounded-lg bg-yellow-200 ">
-          <p className="text-xl font-bold text-center  text-blue-600 ">Todo App</p>
+        <div className="container border border-gray-500 p-8 rounded-lg bg-pink-300 shadow-lg">
+          <p className="text-xl font-bold text-center  text-blue-600 mb-6">Todo App</p>
           <div className="flex justify-end">
             <div className="grid gap-y-2.5">
               <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-x-1" >

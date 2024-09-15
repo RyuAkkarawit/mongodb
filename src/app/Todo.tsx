@@ -27,7 +27,7 @@ export default function Todo({ todo, todoIndex, donHandler }: { todo: ITodo, tod
                 {timeConvert(todo.duedate)}
             </div>
             <div className='col-span-1'>
-                <button className="bg-red-400 text-white rounded-lg p-2 w-full" onClick={(()=>{
+                <button className="bg-red-500 text-white rounded-lg p-2 w-full" onClick={(()=>{
                     donHandler(todoIndex);
                 })}>ลบ</button>
             </div>
