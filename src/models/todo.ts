@@ -1,11 +1,18 @@
-import mongoose from "mongoose";
+//make todo model mongoose schema
 
-const TodoSchema = new mongoose.Schema({
+import { Schema, model } from 'mongoose';
+
+const todoSchema = new Schema({
     name: String,
     description: String,
     status: Boolean,
-    duedate: String,
-  });
-//connent to "todos" collection
-const Todo = mongoose.models.todos || mongoose.model("todos", TodoSchema);
-export default Todo;  
+    dueDate: String
+});
+
+export interface ITodo {
+    name: string;
+    description: string;
+    status: boolean;
+    dueDate: string;
+}
+export default model('todos', todoSchema);
