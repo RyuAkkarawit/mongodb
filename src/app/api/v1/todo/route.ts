@@ -1,6 +1,7 @@
 import { connectToDatabase } from "@/libs/mongodb";
+import todo from "@/models/todo";
 import Todo from "@/models/todo";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -15,20 +16,21 @@ export async function GET() {
   }
 }
 
-/*
-export async function POST(req: NextRequest){
-  try{
-  const body = await req.json();
-  const res = await Todo.create(body);
-  return NextResponse.json({ data: res });
-  }catch(error){
+export async function POST(req: NextRequest) {
+  const data = await req.json();
+
+  if(!data.name || !data.description || data.status == undefined || !data.duedate){
     return NextResponse.json({
-      error: error,
-    });
+      status: 402,
+      message: "Missing fields"
+    })
   }
- }
-//Update
-export async function PUT(){}
-//Delete
-export async function DELETE(){}
-*/
+
+  const newTodo = new todo(data);
+  await newTodo.save();
+
+  return NextResponse.json({
+    status: 200,
+    message: "Added Success"
+  })
+}
