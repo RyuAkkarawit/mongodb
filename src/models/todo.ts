@@ -6,13 +6,15 @@ export const todoSchema = new Schema({
     name: String,
     description: String,
     status: Boolean,
-    dueDate: String
+    duedate: String
 });
 
 export interface ITodo {
+    _id?: string;
     name: string;
     description: string;
     status: boolean;
-    dueDate: string;
+    duedate: string;
 }
+
 export default mongoose.models.todos || model('todos', todoSchema);

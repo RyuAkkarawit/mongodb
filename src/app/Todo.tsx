@@ -1,13 +1,7 @@
 import React from 'react'
+import { ITodo } from '@/models/todo';
 
-export interface ITodo {
-    name: string;
-    description: string;
-    status: boolean;
-    duedate: string;
-}
-
-export default function Todo({ todo, todoIndex, donHandler, toggleStatusHandler }: { todo: ITodo, todoIndex: number, donHandler: (todoIndex: number) => void, toggleStatusHandler: (todoIndex: number) => void }) {
+export default function Todo({ todo, deleteHandler, toggleStatusHandler }: { todo: ITodo, deleteHandler: (todoId: string) => void, toggleStatusHandler: (todoId: string) => void }) {
     
     const timeConvert = (time: string) => {
         const date = new Date(time);
@@ -16,7 +10,7 @@ export default function Todo({ todo, todoIndex, donHandler, toggleStatusHandler 
 
     return (
         <div className='grid grid-cols-7 hover:bg-slate-200 p-2 items-center rounded-xl text-center'>
-            <div className='col-span-1'>
+            <div className='col-span-1' style={{textDecoration: todo.status == false ? 'none' : 'line-through'}}>
                 {todo.name}
             </div>
             <div className='col-span-2'>
@@ -29,19 +23,18 @@ export default function Todo({ todo, todoIndex, donHandler, toggleStatusHandler 
                 {timeConvert(todo.duedate)}
             </div>
             <div className='col-span-1 flex flex-col gap-2'>
-                {/* ปุ่มเปลี่ยนสถานะ */}
+            
                 <button 
                     className={`${
                         todo.status ? 'bg-green-500' : 'bg-yellow-500'
                     } text-white rounded-lg p-2 w-full`}
-                    onClick={() => { toggleStatusHandler(todoIndex); }}
+                    onClick={() => { toggleStatusHandler(todo._id as string); }}
                 >
                     {todo.status ? 'ไม่สำเร็จ' : 'สำเร็จ'}
                 </button>
-                {/* ปุ่มลบ */}
                 <button 
                     className="bg-red-500 text-white rounded-lg p-2 w-full"
-                    onClick={() => { donHandler(todoIndex); }}
+                    onClick={() => { deleteHandler(todo._id as string) }}
                 >
                     ลบ
                 </button>
