@@ -13,7 +13,7 @@ export default function Todo({ todo, deleteHandler, toggleStatusHandler }: { tod
             <div className='col-span-1' style={{textDecoration: todo.status == false ? 'none' : 'line-through'}}>
                 {todo.name}
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2' style={{textDecoration: todo.status == false ? 'none' : 'line-through'}}>
                 {todo.description}
             </div>
             <div className='col-span-1'>
